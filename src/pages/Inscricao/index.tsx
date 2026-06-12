@@ -225,15 +225,6 @@ export default function Inscricao() {
       <main className={styles.mainContent}>
         <div className={styles.formWrapper}>
 
-          <div className={styles.socialProof}>
-            <div className={styles.socialProofAvatars}>
-              {['AL', 'MC', 'RP', 'JB', 'KS'].map(initials => (
-                <div key={initials} className={styles.socialProofAvatar}>{initials}</div>
-              ))}
-            </div>
-            <span>+1.200 empreendedores já passaram pelo Método E+</span>
-          </div>
-
           <form
             onSubmit={(e) => { e.preventDefault(); handleSubmit(e) }}
             noValidate
