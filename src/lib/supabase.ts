@@ -3,23 +3,13 @@ import { createClient } from '@supabase/supabase-js'
 const url = import.meta.env.VITE_SUPABASE_URL as string
 const key = import.meta.env.VITE_SUPABASE_ANON_KEY as string
 
-// Supabase anon key can be a JWT ("eyJ...") — classic format
-// OR the newer "sb_publishable_..." format introduced in 2025
-const isValidUrl = typeof url === 'string' && url.startsWith('https://')
-const isValidKey = typeof key === 'string' && (key.startsWith('eyJ') || key.startsWith('sb_'))
-
-const SAFE_JWT = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiIsImlhdCI6MTYwMDAwMDAwMH0.fake_placeholder_key'
-
-if (!isValidUrl || !isValidKey) {
-  console.warn(
-    '[Supabase] Invalid env vars. Get URL and anon key from: Supabase Dashboard → Project Settings → API'
-  )
+if (!url || !key) {
+  console.warn('[Supabase] VITE_SUPABASE_URL ou VITE_SUPABASE_ANON_KEY não definidos no .env')
 }
 
-// Always pass valid-format strings to createClient to avoid runtime crashes
 export const supabase = createClient(
-  isValidUrl ? url : 'https://placeholder.supabase.co',
-  isValidKey ? key : SAFE_JWT
+  url  || 'https://placeholder.supabase.co',
+  key  || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYW5vbiJ9.placeholder'
 )
 
 export const AXIS = {
