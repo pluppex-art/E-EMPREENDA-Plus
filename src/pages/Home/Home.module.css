@@ -77,11 +77,13 @@
 
 .heroLeft {
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
   position: relative;
   background: #02040A;
   padding-top: 72px;
-  padding-bottom: 72px;
+  padding-bottom: 0;
 }
 
 /* Use max-width to match .container but left-aligned */
@@ -238,46 +240,49 @@
   pointer-events: none;
 }
 
-/* ── HERO STATS (dentro do hero) ── */
+/* ── HERO STATS — barra inferior do hero ── */
 .heroStats {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 28px;
-  margin-top: 36px;
-  max-width: 520px;
+  align-items: stretch;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.015);
+  margin-top: auto;
 }
 
 .heroStatItem {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 5px;
-  padding: 0 24px 0 0;
-  margin-right: 24px;
-  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  flex: 1;
+  padding: 20px 0;
+  text-align: center;
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
+  transition: background 0.2s;
 }
 
 .heroStatItem:last-child {
   border-right: none;
-  padding-right: 0;
-  margin-right: 0;
+}
+
+.heroStatItem:hover {
+  background: rgba(255, 92, 0, 0.04);
 }
 
 .heroStatLabel {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.28);
   white-space: nowrap;
 }
 
 .heroStatValue {
   font-family: var(--font-display);
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 800;
-  color: #fff;
+  color: rgba(255, 255, 255, 0.9);
   white-space: nowrap;
 }
 
