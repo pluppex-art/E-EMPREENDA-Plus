@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import Navbar from '../../components/Navbar'
+import Logo from '../../components/Logo'
 import AnnouncementBar from '../../components/AnnouncementBar'
 import Footer from '../../components/Footer'
 import styles from './Home.module.css'
@@ -63,16 +63,11 @@ export default function Home() {
   return (
     <div className={styles.pageContainer}>
       <AnnouncementBar />
-      <Navbar />
 
       {/* HERO */}
       <section className={styles.hero}>
         <div className={styles.heroLeft}>
           <div className={styles.heroContent}>
-            <div className={styles.heroTag}>
-              <span className={styles.heroTagDot} />
-              5 de Agosto · Vagas Limitadas
-            </div>
 
             <h1 className={styles.heroH1}>
               {hero.h1.split('o caminho.')[0]}
@@ -95,6 +90,19 @@ export default function Home() {
         </div>
 
         <div className={styles.heroRight}>
+          {/* Logo watermark iluminada atrás dos fundadores */}
+          <div className={styles.heroLogoWatermark}>
+            <svg width="620" height="560" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="25" y="50" width="16" height="35" rx="3" fill="#FF5C00" />
+              <rect x="50" y="30" width="16" height="55" rx="3" fill="#FF5C00" />
+              <rect x="75" y="10" width="16" height="75" rx="3" fill="#FF5C00" />
+              <path d="M 20 65 Q 60 75 88 32" stroke="#FF5C00" strokeWidth="5" strokeLinecap="round" fill="none" />
+              <polygon points="94,22 82,34 94,38" fill="#FF5C00" />
+              <rect x="94" y="8" width="20" height="6" rx="1" fill="#FF5C00" />
+              <rect x="101" y="1" width="6" height="20" rx="1" fill="#FF5C00" />
+            </svg>
+          </div>
+
           <img
             src="/founders.jpeg"
             alt="Fundadores E-EMPREENDA+"
@@ -103,6 +111,15 @@ export default function Home() {
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
           />
           <div className={styles.heroPhotoGradient} />
+
+          {/* Logo + tag no fundo da foto */}
+          <div className={styles.heroPhotoBottom}>
+            <Logo size={34} />
+            <div className={styles.heroPhotoTag}>
+              <span className={styles.heroTagDot} />
+              5 de Agosto · Vagas Limitadas
+            </div>
+          </div>
         </div>
 
         <div className={styles.heroStats}>
