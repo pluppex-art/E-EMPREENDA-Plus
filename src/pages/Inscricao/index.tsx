@@ -47,7 +47,7 @@ const DEFAULT_FORM_STEPS: FormStepsConfig = {
   },
   step4: {
     indicator: '5 → FINALIZAR', label: 'Confirme sua inscrição.',
-    description: 'Você está solicitando uma vaga na Turma 3 da E-EMPREENDA+. Nossa equipe entrará em contato em até 48h para confirmar sua participação.',
+    description: 'Você está solicitando uma vaga na Turma 3 da E-EMPREENDA+. Nossa equipe entrará em contato em até 24h para confirmar sua participação.',
   },
 }
 
@@ -214,7 +214,7 @@ export default function Inscricao() {
         <Logo size={42} />
         <div className={styles.headerMeta}>
           <span className={styles.headerStep}>Passo {step + 1} de {TOTAL_STEPS}</span>
-          <span className={styles.headerGuarantee}>Processo seletivo · Resposta em 48h</span>
+          <span className={styles.headerGuarantee}>Processo seletivo · Resposta em 24h</span>
         </div>
       </header>
 
@@ -328,7 +328,7 @@ export default function Inscricao() {
                   {firstName ? `Quase lá, ${firstName}! Confirme sua inscrição.` : 'Confirme sua inscrição.'}
                 </label>
                 <p className={styles.finalText}>
-                  Você está solicitando uma vaga na <strong>Turma 3 da E-EMPREENDA+</strong>. Nossa equipe entrará em contato em até 48h para confirmar sua participação.
+                  Você está solicitando uma vaga na <strong>Turma 3 da E-EMPREENDA+</strong>. Nossa equipe entrará em contato em até 24h para confirmar sua participação.
                 </p>
 
                 <p className={styles.privacyNotice}>
