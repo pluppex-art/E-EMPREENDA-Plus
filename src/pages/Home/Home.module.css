@@ -238,6 +238,49 @@
   pointer-events: none;
 }
 
+/* ── HERO STATS (dentro do hero) ── */
+.heroStats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 28px;
+  margin-top: 36px;
+  max-width: 520px;
+}
+
+.heroStatItem {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 0 24px 0 0;
+  margin-right: 24px;
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.heroStatItem:last-child {
+  border-right: none;
+  padding-right: 0;
+  margin-right: 0;
+}
+
+.heroStatLabel {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+  white-space: nowrap;
+}
+
+.heroStatValue {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 800;
+  color: #fff;
+  white-space: nowrap;
+}
+
 /* ── INFO STRIP ── */
 .infoStrip {
   display: flex;
@@ -705,6 +748,11 @@
 @media (max-width: 480px) {
   .section { padding: 60px 0; }
   .sectionH2 { font-size: clamp(24px, 9vw, 36px); }
+
+  /* Hero stats */
+  .heroStats { gap: 0; margin-top: 28px; padding-top: 20px; }
+  .heroStatItem { padding-right: 16px; margin-right: 16px; margin-bottom: 12px; }
+  .heroStatValue { font-size: 13px; }
 
   /* Hero */
   .heroContent { padding: 28px 20px 32px; }

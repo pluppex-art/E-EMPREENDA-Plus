@@ -90,6 +90,21 @@ export default function Home() {
             <Link to="/inscricao" className={styles.heroBtn}>
               {hero.ctaText} →
             </Link>
+
+            <div className={styles.heroStats}>
+              {[
+                { label: 'Próxima Turma', value: '5 de Agosto' },
+                { label: 'Formato', value: 'Presencial' },
+                { label: 'Duração', value: '12 Encontros' },
+                { label: 'Vagas', value: '50 no Total' },
+                { label: 'Networking', value: 'Elite' },
+              ].map(({ label, value }) => (
+                <div key={label} className={styles.heroStatItem}>
+                  <span className={styles.heroStatLabel}>{label}</span>
+                  <span className={styles.heroStatValue}>{value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
@@ -104,22 +119,6 @@ export default function Home() {
           <div className={styles.heroPhotoGradient} />
         </div>
       </section>
-
-      {/* INFO STRIP */}
-      <div className={styles.infoStrip}>
-        {[
-          ['Próxima Turma', '5 de Agosto'],
-          ['Formato', 'Presencial Intensivo'],
-          ['Duração', '12 Encontros'],
-          ['Vagas', '50 no Total'],
-          ['Networking', 'Elite'],
-        ].map(([label, value]) => (
-          <div key={label} className={styles.infoItem}>
-            <span className={styles.infoLabel}>{label}:</span>
-            <span className={styles.infoValue}>{value}</span>
-          </div>
-        ))}
-      </div>
 
       {/* LOGO BAR */}
       <div className={styles.logoBar}>

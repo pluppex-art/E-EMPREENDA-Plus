@@ -17,7 +17,7 @@ interface FormData {
 
 const INITIAL: FormData = {
   nome: '', email: '', telefone: '',
-  perfil: '', desafio: '', programa: 'imersao', lgpd: false,
+  perfil: '', desafio: '', programa: 'imersao', lgpd: true,
 }
 
 interface CardOption { value: string; label: string; sub?: string; icon?: string }
@@ -106,7 +106,6 @@ export default function Inscricao() {
         if (!formData.desafio) { setError('Selecione seu maior desafio agora.'); return false }
         break
       case 4:
-        if (!formData.lgpd) { setError('Aceite a Política de Privacidade para continuar.'); return false }
         break
     }
     setError('')
@@ -249,24 +248,10 @@ export default function Inscricao() {
               </div>
             )}
 
-            {/* STEP 1 — EMAIL + TELEFONE */}
+            {/* STEP 1 — TELEFONE + EMAIL */}
             {step === 1 && (
               <div className={`${styles.questionContainer} ${styles.animateSlideUp}`}>
-                <div className={styles.stepIndicator}>2 → CONTATO</div>
-                <label>
-                  {firstName ? `Oi, ${firstName}! Como podemos te encontrar?` : 'Como podemos te encontrar?'}
-                </label>
                 <div className={styles.multiField}>
-                  <div className={styles.fieldGroup}>
-                    <span className={styles.fieldLabel}>Seu melhor e-mail</span>
-                    <input
-                      id="email" type="email" placeholder="voce@email.com"
-                      value={formData.email}
-                      onChange={(e) => set('email', e.target.value)}
-                      onKeyDown={handleKeyDown}
-                      autoFocus autoComplete="email"
-                    />
-                  </div>
                   <div className={styles.fieldGroup}>
                     <span className={styles.fieldLabel}>WhatsApp / Celular</span>
                     <input
@@ -274,7 +259,17 @@ export default function Inscricao() {
                       value={formData.telefone}
                       onChange={(e) => set('telefone', applyPhoneMask(e.target.value))}
                       onKeyDown={handleKeyDown}
-                      autoComplete="tel" maxLength={15}
+                      autoFocus autoComplete="tel" maxLength={15}
+                    />
+                  </div>
+                  <div className={styles.fieldGroup}>
+                    <span className={styles.fieldLabel}>Seu melhor e-mail</span>
+                    <input
+                      id="email" type="email" placeholder="voce@email.com"
+                      value={formData.email}
+                      onChange={(e) => set('email', e.target.value)}
+                      onKeyDown={handleKeyDown}
+                      autoComplete="email"
                     />
                   </div>
                 </div>
@@ -339,18 +334,11 @@ export default function Inscricao() {
                   Você está solicitando uma vaga na <strong>Turma 3 da E-EMPREENDA+</strong>. Nossa equipe entrará em contato em até 48h para confirmar sua participação.
                 </p>
 
-                <label className={`${styles.checkboxLabel} ${formData.lgpd ? styles.checkboxLabelChecked : ''}`}>
-                  <input
-                    type="checkbox"
-                    checked={formData.lgpd}
-                    onChange={(e) => set('lgpd', e.target.checked)}
-                  />
-                  <span>
-                    Li e concordo com a{' '}
-                    <a href="#" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>
-                    {' '}e autorizo o contato da equipe da E-EMPREENDA+.
-                  </span>
-                </label>
+                <p className={styles.privacyNotice}>
+                  Ao clicar em "Quero Despertar", você concorda com a nossa{' '}
+                  <a href="#" target="_blank" rel="noopener noreferrer">Política de Privacidade</a>
+                  {' '}e autoriza o contato da equipe da E-EMPREENDA+ para confirmação da sua vaga.
+                </p>
               </div>
             )}
 

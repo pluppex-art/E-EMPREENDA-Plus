@@ -218,6 +218,24 @@
   text-underline-offset: 4px;
 }
 
+.privacyNotice {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.28);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.privacyNotice a {
+  color: rgba(255, 92, 0, 0.6);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s;
+}
+
+.privacyNotice a:hover {
+  color: var(--orange, #FF5C00);
+}
+
 .error {
   margin-top: 24px;
   font-size: 15px;
