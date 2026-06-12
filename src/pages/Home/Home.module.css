@@ -662,22 +662,34 @@
   .movementGrid { gap: 32px; }
 }
 
+/* ─── TABLET — colapsa hero em coluna única ─── */
 @media (max-width: 900px) {
+  /* Hero grid: foto → conteúdo → stats */
   .hero {
     grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
     min-height: auto;
-    padding-top: 130px;
+    padding-top: 0;
   }
-  .heroLeft { padding-top: 24px; padding-bottom: 0; }
-  .heroContent { padding: 0 24px; max-width: 100%; }
   .heroRight {
-    min-height: 56vw;
-    max-height: 460px;
-    order: -1;
+    grid-column: 1;
+    grid-row: 1;
+    min-height: 55vw;
+    max-height: 400px;
+    padding-top: 130px; /* espaço para navbar + announcement */
   }
-  .infoStrip { flex-wrap: wrap; }
-  .infoItem { min-width: 46%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.05); }
-  .infoItem:last-child { border-bottom: none; }
+  .heroLeft {
+    grid-column: 1;
+    grid-row: 2;
+    padding-top: 36px;
+    padding-bottom: 0;
+  }
+  .heroStats {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .heroContent { padding: 0 28px; max-width: 100%; }
+
   .pillarsGrid { grid-template-columns: repeat(2, 1fr); }
   .programsGrid { grid-template-columns: 1fr; gap: 40px; }
 }
@@ -694,13 +706,18 @@
   .heroTag { font-size: 10px; margin-bottom: 20px; }
   .heroCredentials { gap: 10px; margin-bottom: 28px; }
   .credItem { font-size: 13px; }
-  .heroBtn { font-size: 13px; padding: 16px 32px; }
+  .heroBtn { width: 100%; justify-content: center; font-size: 14px; padding: 18px 24px; }
   .heroRight { min-height: 60vw; max-height: none; }
 
-  /* Info strip — 2 colunas */
-  .infoItem { min-width: 50%; padding: 16px 20px; }
-  .infoValue { font-size: 13px; }
-  .infoLabel { font-size: 9px; }
+  /* Hero stats — horizontal scroll no tablet */
+  .heroStats {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .heroStats::-webkit-scrollbar { display: none; }
+  .heroStatItem { flex: 0 0 auto; min-width: 110px; }
 
   /* Logo bar */
   .logoBarLogos { gap: 24px; padding: 0 24px; }
@@ -755,24 +772,22 @@
 
 /* ─── MOBILE PHONES ─── */
 @media (max-width: 480px) {
-  .section { padding: 60px 0; }
+  .section { padding: 56px 0; }
   .sectionH2 { font-size: clamp(24px, 9vw, 36px); }
 
-  /* Hero stats */
-  .heroStats { gap: 0; margin-top: 28px; padding-top: 20px; }
-  .heroStatItem { padding-right: 16px; margin-right: 16px; margin-bottom: 12px; }
-  .heroStatValue { font-size: 13px; }
-
   /* Hero */
-  .heroContent { padding: 28px 20px 32px; }
-  .heroH1 { font-size: clamp(24px, 8.5vw, 34px); line-height: 1.15; }
+  .heroRight { min-height: 62vw; max-height: 320px; padding-top: 110px; }
+  .heroContent { padding: 20px 20px 28px; }
+  .heroH1 { font-size: clamp(22px, 8vw, 30px); line-height: 1.15; }
   .heroSub { font-size: 13px; margin-bottom: 20px; }
+  .heroTag { font-size: 9px; padding: 6px 12px; margin-bottom: 16px; }
   .heroCredentials { display: none; }
-  .heroBtn { width: 100%; justify-content: center; font-size: 14px; padding: 18px 24px; }
-  .heroRight { min-height: 70vw; }
+  .heroBtn { padding: 17px 20px; }
 
-  /* Info strip — 1 coluna */
-  .infoItem { min-width: 100%; padding: 14px 20px; flex-direction: row; justify-content: space-between; align-items: center; }
+  /* Hero stats — scroll horizontal invisível */
+  .heroStatItem { min-width: 96px; padding: 16px 0; }
+  .heroStatValue { font-size: 12px; }
+  .heroStatLabel { font-size: 8px; letter-spacing: 0.1em; }
 
   /* Pillars — 1 coluna */
   .pillarsGrid { grid-template-columns: 1fr; }
@@ -781,19 +796,19 @@
   .howGrid { grid-template-columns: 1fr; }
 
   /* Programs */
-  .programCard { padding: 36px 24px; }
-  .programsGrid { gap: 32px; }
+  .programCard { padding: 36px 20px; }
+  .programsGrid { gap: 28px; }
   .programBenefits li { font-size: 13px; }
 
   /* Guarantee */
-  .guaranteeBanner { padding: 28px 20px; }
+  .guaranteeBanner { padding: 24px 20px; }
 
   /* Buttons full width */
   .painCta .btnPrimary { width: 100%; justify-content: center; }
 
   /* CTA banner */
   .ctaBanner { padding: 72px 0; }
-  .ctaBanner h2 { font-size: clamp(26px, 9vw, 40px); }
+  .ctaBanner h2 { font-size: clamp(24px, 9vw, 38px); }
   .ctaBanner p { font-size: 15px; }
   .ctaBanner .btnPrimary { width: calc(100% - 40px); justify-content: center; }
 }

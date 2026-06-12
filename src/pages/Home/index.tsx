@@ -39,7 +39,7 @@ const DEFAULT_GROUP_BENEFITS = [
 ]
 
 const DEFAULT_HERO = {
-  h1: 'Seu negócio não cresce porque ninguém te ensinou o caminho.',
+  h1: 'Seu negócio não existe porque ninguém te ensinou o caminho.',
   subtitle: 'A maioria das pessoas sonha em empreender, mas poucas têm coragem de começar. A Turma 3 da E-Empreenda+ é a sua oportunidade para construir um negócio lucrativo com propósito e visão estratégica.',
   quote: 'Empreender transforma vidas.',
   ctaText: 'Garantir Minha Vaga',
