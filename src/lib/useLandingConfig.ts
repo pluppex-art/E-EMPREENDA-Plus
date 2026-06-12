@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react'
 import { supabase, AXIS } from './supabase'
 
 const SITE_KEY = 'eempreenda'
+const SUPABASE_CONFIGURED = !!import.meta.env.VITE_SUPABASE_URL
 
 export function useLandingSection<T>(section: string, fallback: T): [T, boolean] {
   const [data, setData]       = useState<T>(fallback)
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(SUPABASE_CONFIGURED)
 
   useEffect(() => {
+    if (!SUPABASE_CONFIGURED) return
+
     supabase
       .from('landing_configs')
       .select('content')
@@ -15,8 +18,12 @@ export function useLandingSection<T>(section: string, fallback: T): [T, boolean]
       .eq('site_key', SITE_KEY)
       .eq('section', section)
       .maybeSingle()
-      .then(({ data: row }) => {
-        if (row?.content) setData(row.content as T)
+      .then(({ data: row, error }) => {
+        if (error) {
+          console.warn(`[landing] section "${section}" não carregada:`, error.message)
+        } else if (row?.content) {
+          setData(row.content as T)
+        }
         setLoading(false)
       })
   }, [section])
