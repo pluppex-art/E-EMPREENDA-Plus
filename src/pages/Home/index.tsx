@@ -69,6 +69,12 @@ export default function Home() {
         <div className={styles.heroLeft}>
           <div className={styles.heroContent}>
 
+            <Logo size={36} />
+            <div className={styles.heroTag} style={{ marginTop: '16px' }}>
+              <span className={styles.heroTagDot} />
+              5 de Agosto · Vagas Limitadas
+            </div>
+
             <h1 className={styles.heroH1}>
               {hero.h1.split('o caminho.')[0]}
               <em>o caminho.</em>
@@ -111,15 +117,6 @@ export default function Home() {
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
           />
           <div className={styles.heroPhotoGradient} />
-
-          {/* Logo + tag no fundo da foto */}
-          <div className={styles.heroPhotoBottom}>
-            <Logo size={34} />
-            <div className={styles.heroPhotoTag}>
-              <span className={styles.heroTagDot} />
-              5 de Agosto · Vagas Limitadas
-            </div>
-          </div>
         </div>
 
         <div className={styles.heroStats}>
