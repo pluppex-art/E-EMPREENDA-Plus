@@ -80,11 +80,12 @@
   display: flex;
   align-items: flex-start;
   position: relative;
-  background: #02040A;
+  background: transparent;
   padding-top: 72px;
   padding-bottom: 72px;
   grid-row: 1;
   grid-column: 1;
+  z-index: 2;
 }
 
 /* Use max-width to match .container but left-aligned */
@@ -212,84 +213,35 @@
   100% { left: 200%; }
 }
 
-/* Hero right — full-bleed photo */
+/* Hero right — espaço vazio, fundadores aparecem no fundo */
 .heroRight {
-  position: relative;
-  overflow: hidden;
-  background: #02040A;
   grid-row: 1;
   grid-column: 2;
 }
 
-/* Watermark da logo atrás dos fundadores */
-.heroLogoWatermark {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -52%);
-  opacity: 0.18;
-  pointer-events: none;
-  filter:
-    drop-shadow(0 0 120px rgba(255, 92, 0, 1))
-    drop-shadow(0 0 60px rgba(255, 92, 0, 0.9))
-    drop-shadow(0 0 24px rgba(255, 92, 0, 0.7));
-  z-index: 0;
-}
-
-/* Logo + tag sobrepostos no fundo da foto */
-.heroPhotoBottom {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 28px 28px;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 14px;
-  z-index: 3;
-  background: linear-gradient(to top, rgba(2,4,10,0.55) 0%, transparent 100%);
-}
-
-.heroPhotoTag {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: rgba(255, 92, 0, 0.08);
-  border: 1px solid rgba(255, 92, 0, 0.25);
-  color: var(--orange);
-  font-family: var(--font-display);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 8px 16px;
-  border-radius: 100px;
-  backdrop-filter: blur(8px);
-}
-
+/* Foto full-bleed cobrindo todo o hero */
 .heroPhoto {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center center;
   display: block;
   user-select: none;
-  filter: brightness(0.9) contrast(1.05);
+  z-index: 0;
 }
 
-/* Multi-directional gradients to mask white studio background */
+/* Gradiente: escuro à esquerda (legibilidade do texto), transparente à direita (fundadores visíveis) */
 .heroPhotoGradient {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to right, #02040A 0%, rgba(2,4,10,0.6) 12%, rgba(2,4,10,0.08) 38%, transparent 60%),
-    linear-gradient(to bottom, rgba(2,4,10,0.7) 0%, rgba(2,4,10,0.2) 8%, transparent 35%),
-    linear-gradient(to top, rgba(2,4,10,0.45) 0%, transparent 28%),
-    linear-gradient(to left, rgba(2,4,10,0.15) 0%, transparent 18%);
+    linear-gradient(to right, #02040A 0%, rgba(2,4,10,0.92) 28%, rgba(2,4,10,0.6) 48%, rgba(2,4,10,0.1) 70%, transparent 100%),
+    linear-gradient(to bottom, rgba(2,4,10,0.5) 0%, transparent 20%),
+    linear-gradient(to top, rgba(2,4,10,0.6) 0%, transparent 25%);
   pointer-events: none;
+  z-index: 1;
 }
 
 /* ── HERO STATS — barra de largura total na base do hero ── */
@@ -299,7 +251,10 @@
   display: flex;
   align-items: stretch;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(255, 255, 255, 0.015);
+  background: rgba(2, 4, 10, 0.85);
+  backdrop-filter: blur(12px);
+  position: relative;
+  z-index: 2;
 }
 
 .heroStatItem {
