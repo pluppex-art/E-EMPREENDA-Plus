@@ -1,8 +1,7 @@
 import { useEffect, useState } from 'react'
-import { supabase, AXIS } from './supabase'
+import { supabase, AXIS, SUPABASE_CONFIGURED } from './supabase'
 
 const SITE_KEY = 'eempreenda'
-const SUPABASE_CONFIGURED = !!import.meta.env.VITE_SUPABASE_URL
 
 export function useLandingSection<T>(section: string, fallback: T): [T, boolean] {
   const [data, setData]       = useState<T>(fallback)

@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import Logo from '../../components/Logo'
 import styles from './Inscricao.module.css'
-import { supabase, AXIS } from '../../lib/supabase'
+import { supabase, AXIS, SUPABASE_CONFIGURED } from '../../lib/supabase'
 import { useLandingSection } from '../../lib/useLandingConfig'
 
 interface FormData {
@@ -141,6 +141,12 @@ export default function Inscricao() {
 
     const perfilLabel  = (formSteps.step2.options ?? []).find((o: CardOption) => o.value === formData.perfil)?.label  ?? formData.perfil
     const desafioLabel = (formSteps.step3.options ?? []).find((o: CardOption) => o.value === formData.desafio)?.label ?? formData.desafio
+
+    if (!SUPABASE_CONFIGURED) {
+      setLoading(false)
+      navigate('/obrigado', { state: { consultor: null } })
+      return
+    }
 
     // Rodízio: busca o próximo SDR disponível no Axis CRM
     const { data: sdrRows } = await supabase.rpc('claim_next_form_sdr', {
