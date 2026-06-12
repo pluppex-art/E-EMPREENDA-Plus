@@ -669,14 +669,13 @@
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
     min-height: auto;
-    padding-top: 0;
+    padding-top: 130px; /* mantém espaço para announcement bar + navbar fixos */
   }
   .heroRight {
     grid-column: 1;
     grid-row: 1;
     min-height: 55vw;
     max-height: 400px;
-    padding-top: 130px; /* espaço para navbar + announcement */
   }
   .heroLeft {
     grid-column: 1;
@@ -776,7 +775,7 @@
   .sectionH2 { font-size: clamp(24px, 9vw, 36px); }
 
   /* Hero */
-  .heroRight { min-height: 62vw; max-height: 320px; padding-top: 110px; }
+  .heroRight { min-height: 62vw; max-height: 320px; }
   .heroContent { padding: 20px 20px 28px; }
   .heroH1 { font-size: clamp(22px, 8vw, 30px); line-height: 1.15; }
   .heroSub { font-size: 13px; margin-bottom: 20px; }
