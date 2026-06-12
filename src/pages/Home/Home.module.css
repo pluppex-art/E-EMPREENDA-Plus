@@ -69,6 +69,7 @@
 .hero {
   display: grid;
   grid-template-columns: 55% 45%;
+  grid-template-rows: 1fr auto;
   min-height: 100vh;
   padding-top: 130px; /* announcement bar 54px + navbar ~76px */
   position: relative;
@@ -77,13 +78,13 @@
 
 .heroLeft {
   display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: stretch;
+  align-items: flex-start;
   position: relative;
   background: #02040A;
   padding-top: 72px;
-  padding-bottom: 0;
+  padding-bottom: 72px;
+  grid-row: 1;
+  grid-column: 1;
 }
 
 /* Use max-width to match .container but left-aligned */
@@ -213,7 +214,9 @@
 .heroRight {
   position: relative;
   overflow: hidden;
-  background: #02040A; /* same dark as page — multiply blends white photo bg into this */
+  background: #02040A;
+  grid-row: 1;
+  grid-column: 2;
 }
 
 .heroPhoto {
@@ -240,13 +243,14 @@
   pointer-events: none;
 }
 
-/* ── HERO STATS — barra inferior do hero ── */
+/* ── HERO STATS — barra de largura total na base do hero ── */
 .heroStats {
+  grid-column: 1 / -1;
+  grid-row: 2;
   display: flex;
   align-items: stretch;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
   background: rgba(255, 255, 255, 0.015);
-  margin-top: auto;
 }
 
 .heroStatItem {
@@ -255,7 +259,7 @@
   justify-content: center;
   gap: 5px;
   flex: 1;
-  padding: 20px 0;
+  padding: 22px 0;
   text-align: center;
   border-right: 1px solid rgba(255, 255, 255, 0.06);
   transition: background 0.2s;
@@ -280,7 +284,7 @@
 
 .heroStatValue {
   font-family: var(--font-display);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
   color: rgba(255, 255, 255, 0.9);
   white-space: nowrap;

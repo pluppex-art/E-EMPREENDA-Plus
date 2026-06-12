@@ -92,20 +92,6 @@ export default function Home() {
             </Link>
           </div>
 
-          <div className={styles.heroStats}>
-            {[
-              { label: 'Próxima Turma', value: '5 de Agosto' },
-              { label: 'Formato', value: 'Presencial' },
-              { label: 'Duração', value: '12 Encontros' },
-              { label: 'Vagas', value: '50 no Total' },
-              { label: 'Networking', value: 'Elite' },
-            ].map(({ label, value }) => (
-              <div key={label} className={styles.heroStatItem}>
-                <span className={styles.heroStatLabel}>{label}</span>
-                <span className={styles.heroStatValue}>{value}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className={styles.heroRight}>
@@ -117,6 +103,21 @@ export default function Home() {
             onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
           />
           <div className={styles.heroPhotoGradient} />
+        </div>
+
+        <div className={styles.heroStats}>
+          {[
+            { label: 'Próxima Turma', value: '5 de Agosto' },
+            { label: 'Formato', value: 'Presencial' },
+            { label: 'Duração', value: '12 Encontros' },
+            { label: 'Vagas', value: '50 no Total' },
+            { label: 'Networking', value: 'Elite' },
+          ].map(({ label, value }) => (
+            <div key={label} className={styles.heroStatItem}>
+              <span className={styles.heroStatLabel}>{label}</span>
+              <span className={styles.heroStatValue}>{value}</span>
+            </div>
+          ))}
         </div>
       </section>
 
