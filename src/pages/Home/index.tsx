@@ -67,6 +67,16 @@ export default function Home() {
 
       {/* HERO */}
       <section className={styles.hero}>
+        {/* Foto como fundo full-bleed — todos os fundadores e logo visíveis */}
+        <img
+          src="/founders.jpeg"
+          alt="Fundadores E-EMPREENDA+"
+          className={styles.heroPhoto}
+          draggable={false}
+          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+        />
+        <div className={styles.heroPhotoGradient} />
+
         <div className={styles.heroLeft}>
           <div className={styles.heroContent}>
 
@@ -93,32 +103,10 @@ export default function Home() {
               {hero.ctaText} →
             </Link>
           </div>
-
         </div>
 
-        <div className={styles.heroRight}>
-          {/* Logo watermark iluminada atrás dos fundadores */}
-          <div className={styles.heroLogoWatermark}>
-            <svg width="620" height="560" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="25" y="50" width="16" height="35" rx="3" fill="#FF5C00" />
-              <rect x="50" y="30" width="16" height="55" rx="3" fill="#FF5C00" />
-              <rect x="75" y="10" width="16" height="75" rx="3" fill="#FF5C00" />
-              <path d="M 20 65 Q 60 75 88 32" stroke="#FF5C00" strokeWidth="5" strokeLinecap="round" fill="none" />
-              <polygon points="94,22 82,34 94,38" fill="#FF5C00" />
-              <rect x="94" y="8" width="20" height="6" rx="1" fill="#FF5C00" />
-              <rect x="101" y="1" width="6" height="20" rx="1" fill="#FF5C00" />
-            </svg>
-          </div>
-
-          <img
-            src="/founders.jpeg"
-            alt="Fundadores E-EMPREENDA+"
-            className={styles.heroPhoto}
-            draggable={false}
-            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-          />
-          <div className={styles.heroPhotoGradient} />
-        </div>
+        {/* Coluna direita vazia — fundadores aparecem no fundo */}
+        <div className={styles.heroRight} />
 
         <div className={styles.heroStats}>
           {[
