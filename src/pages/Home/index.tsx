@@ -11,6 +11,7 @@ const DEFAULT_PILARES = [
   { num: '01', title: 'Identidade & Propósito', desc: 'Clareza total sobre quem você é e a marca que deseja deixar no mundo.' },
   { num: '02', title: 'Mentalidade de Legado', desc: 'Foco emocional e psicológico para empreender com resiliência e visão de longo prazo.' },
   { num: '03', title: 'Execução Prática', desc: 'Método e ferramentas para transformar ideias em negócios sustentáveis.' },
+  { num: '04', title: 'Vendas & Resultado', desc: 'Sistemas e estratégias práticas para gerar receita, validar mercado e escalar com previsibilidade.' },
 ]
 
 const DEFAULT_TESTIMONIALS = [
@@ -257,26 +258,22 @@ export default function Home() {
 
       {/* GUARANTEE */}
       <section className={styles.section}>
-        <div className="container">
-          <div className={`${styles.guaranteeBanner} ${styles.glass}`}>
-            <div className={styles.guaranteeIcon}>
-              <svg viewBox="0 0 24 24" fill="none" width="40" height="40"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" /></svg>
+        <div className="container" style={{ textAlign: 'center' }}>
+          <span className={styles.sectionLabel}>Garantia Dupla</span>
+          <h2 className={styles.sectionH2} style={{ marginBottom: '12px' }}>Risco Zero. Resultado Garantido.</h2>
+          <p className={styles.sectionSub} style={{ margin: '0 auto 40px', textAlign: 'center' }}>
+            Você entra sem risco. Se não entregar o resultado, devolvemos tudo — e ainda pagamos.
+          </p>
+          <div className={styles.guaranteeDualGrid}>
+            <div className={styles.guaranteeCard}>
+              <div className={styles.guaranteeCardBadge}>Garantia 1 — Incondicional</div>
+              <h3>15 Dias Sem Perguntas</h3>
+              <p>Participe dos 2 primeiros encontros presenciais. Se não estiver 100% satisfeito, devolvemos o valor integral sem burocracia e sem justificativa.</p>
             </div>
-            <div className={styles.guaranteeContent}>
-              <span className={styles.sectionLabel}>Nossa Garantia</span>
-              <h2 className={styles.guaranteeTitle}>Garantia Total de Resultados</h2>
-              <p className={styles.guaranteeText}>
-                Se você participar ativamente dos 12 encontros e não conseguir implementar ao menos um sistema novo no seu negócio,{' '}
-                <strong>devolvemos 100% do investimento. Sem perguntas.</strong>
-              </p>
-              <div className={styles.guaranteeItems}>
-                {['Resultado validado em +2.400 empreendedores', 'Mentores com negócios reais e ativos', 'Comunidade permanente garantida'].map(item => (
-                  <div key={item} className={styles.guaranteeItem}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="#FF5C00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" /></svg>
-                    {item}
-                  </div>
-                ))}
-              </div>
+            <div className={`${styles.guaranteeCard} ${styles.guaranteeCardFeatured}`}>
+              <div className={styles.guaranteeCardBadge}>Garantia 2 — Condicional</div>
+              <h3>100% de Devolução + R$ 500 no Pix</h3>
+              <p>Se você cumprir 100% das aulas e atividades e não estruturar seu negócio com a primeira venda realizada, devolvemos tudo + R$ 500 no Pix + uma sessão exclusiva com os 3 mentores para montar seu plano de 90 dias. Se após 30 dias ainda não estiver satisfeito, a devolução total e o Pix são seus.</p>
             </div>
           </div>
         </div>

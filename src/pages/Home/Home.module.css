@@ -273,8 +273,8 @@
   inset: 0;
   width: 100%;
   height: 100%;
-  object-fit: contain;
-  object-position: center 20%;
+  object-fit: cover;
+  object-position: center top;
   display: block;
   user-select: none;
   filter: brightness(0.9) contrast(1.05);
@@ -677,6 +677,61 @@
 .guaranteeItems { display: flex; gap: 32px; flex-wrap: wrap; }
 .guaranteeItem { display: flex; align-items: center; gap: 10px; font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.65); }
 
+/* ── GARANTIA DUPLA ── */
+.guaranteeDualGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.guaranteeCard {
+  padding: 28px 24px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.guaranteeCard h3 {
+  font-size: 16px;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.guaranteeCard p {
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.guaranteeCardFeatured {
+  border-color: rgba(255, 92, 0, 0.3) !important;
+  background: rgba(255, 92, 0, 0.05) !important;
+  box-shadow: 0 0 40px rgba(255, 92, 0, 0.08);
+}
+
+.guaranteeCardBadge {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 92, 0, 0.12);
+  border: 1px solid rgba(255, 92, 0, 0.3);
+  color: var(--orange);
+  font-family: var(--font-display);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 100px;
+  width: fit-content;
+}
+
 /* ── FAQ ── */
 .faqList { max-width: 780px; margin: 0 auto; }
 .faqItem { border-bottom: 1px solid rgba(255,255,255,0.07); padding: 28px 0; }
@@ -805,6 +860,7 @@
   .guaranteeBanner { padding: 32px 24px; flex-direction: column; gap: 20px; }
   .guaranteeItems { flex-direction: column; gap: 12px; }
   .guaranteeTitle { font-size: clamp(22px, 6vw, 32px); }
+  .guaranteeDualGrid { grid-template-columns: 1fr; }
 
   /* FAQ */
   .faqBtn { font-size: 16px; }
