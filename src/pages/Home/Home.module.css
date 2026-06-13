@@ -65,34 +65,51 @@
   margin-bottom: 64px;
 }
 
-/* ── HERO — G4 STYLE SPLIT ── */
+/* ── HERO — SPLIT: foto esquerda, texto direita ── */
 .hero {
   display: grid;
-  grid-template-columns: 55% 45%;
+  grid-template-columns: 44% 56%;
   grid-template-rows: 1fr auto;
   min-height: 100vh;
-  padding-top: 48px; /* apenas a announcement bar fixa */
+  padding-top: 48px;
+  position: relative;
+  background: #02040A;
+}
+
+/* Coluna esquerda — foto contida */
+.heroLeft {
+  grid-row: 1;
+  grid-column: 1;
   position: relative;
   overflow: hidden;
 }
 
-.heroLeft {
-  display: flex;
-  align-items: flex-start;
-  position: relative;
-  background: transparent;
-  padding-top: 72px;
-  padding-bottom: 72px;
+/* Fade suave na borda direita da foto para fundir com o fundo escuro */
+.heroLeft::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to right, transparent 55%, rgba(2,4,10,0.6) 80%, #02040A 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Coluna direita — conteúdo */
+.heroRight {
   grid-row: 1;
-  grid-column: 1;
+  grid-column: 2;
+  display: flex;
+  align-items: center;
+  padding: 72px 0;
+  background: #02040A;
+  position: relative;
   z-index: 2;
 }
 
-/* Use max-width to match .container but left-aligned */
 .heroContent {
   width: 100%;
-  max-width: 640px;
-  padding: 0 48px 0 clamp(24px, calc((100vw - 1280px) / 2 + 48px), 120px);
+  max-width: 620px;
+  padding: 0 clamp(24px, 6vw, 80px) 0 40px;
 }
 
 .heroTag {
@@ -183,11 +200,11 @@
   background: var(--btn-color);
   color: #fff;
   font-family: var(--font-display);
-  font-size: 22px;
+  font-size: 26px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 30px 64px;
+  padding: 32px 72px;
   border-radius: 999px;
   width: 100%;
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -213,13 +230,7 @@
   100% { left: 200%; }
 }
 
-/* Hero right — espaço vazio, fundadores aparecem no fundo */
-.heroRight {
-  grid-row: 1;
-  grid-column: 2;
-}
-
-/* Foto full-bleed cobrindo todo o hero */
+/* Foto contida na coluna esquerda */
 .heroPhoto {
   position: absolute;
   inset: 0;
@@ -230,18 +241,6 @@
   display: block;
   user-select: none;
   z-index: 0;
-}
-
-/* Gradiente: escuro à esquerda (legibilidade do texto), transparente à direita (fundadores visíveis) */
-.heroPhotoGradient {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(to right, #02040A 0%, rgba(2,4,10,0.92) 28%, rgba(2,4,10,0.6) 48%, rgba(2,4,10,0.1) 70%, transparent 100%),
-    linear-gradient(to bottom, rgba(2,4,10,0.5) 0%, transparent 20%),
-    linear-gradient(to top, rgba(2,4,10,0.6) 0%, transparent 25%);
-  pointer-events: none;
-  z-index: 1;
 }
 
 /* ── HERO STATS — barra de largura total na base do hero ── */
@@ -723,24 +722,27 @@
 
 /* ─── TABLET — colapsa hero em coluna única ─── */
 @media (max-width: 900px) {
-  /* Hero grid: foto → conteúdo → stats */
+  /* Hero grid: foto em cima, texto abaixo, stats na base */
   .hero {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto auto;
     min-height: auto;
-    padding-top: 44px; /* apenas a announcement bar fixa */
+    padding-top: 44px;
   }
-  .heroRight {
+  .heroLeft {
     grid-column: 1;
     grid-row: 1;
     min-height: 55vw;
     max-height: 400px;
   }
-  .heroLeft {
+  .heroLeft::after {
+    background: linear-gradient(to bottom, transparent 60%, rgba(2,4,10,0.7) 85%, #02040A 100%);
+  }
+  .heroRight {
     grid-column: 1;
     grid-row: 2;
-    padding-top: 36px;
-    padding-bottom: 0;
+    padding: 36px 0 0;
+    background: #02040A;
   }
   .heroStats {
     grid-column: 1;
@@ -764,8 +766,8 @@
   .heroTag { font-size: 10px; margin-bottom: 20px; }
   .heroCredentials { gap: 10px; margin-bottom: 28px; }
   .credItem { font-size: 13px; }
-  .heroBtn { font-size: 18px; padding: 24px 36px; }
-  .heroRight { min-height: 60vw; max-height: none; }
+  .heroBtn { font-size: 20px; padding: 26px 40px; }
+  .heroLeft { min-height: 60vw; max-height: none; }
 
   /* Hero stats — horizontal scroll no tablet */
   .heroStats {
@@ -835,13 +837,13 @@
   .sectionH2 { font-size: clamp(24px, 9vw, 36px); }
 
   /* Hero */
-  .heroRight { min-height: 62vw; max-height: 320px; }
+  .heroLeft { min-height: 62vw; max-height: 320px; }
   .heroContent { padding: 20px 20px 28px; }
   .heroH1 { font-size: clamp(22px, 8vw, 30px); line-height: 1.15; }
   .heroSub { font-size: 13px; margin-bottom: 20px; }
   .heroTag { font-size: 9px; padding: 6px 12px; margin-bottom: 16px; }
   .heroCredentials { display: none; }
-  .heroBtn { font-size: 17px; padding: 22px 24px; }
+  .heroBtn { font-size: 19px; padding: 24px 28px; }
 
   /* Hero stats — scroll horizontal invisível */
   .heroStatItem { min-width: 96px; padding: 16px 0; }
