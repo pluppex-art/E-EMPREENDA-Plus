@@ -721,20 +721,20 @@
   .heroRight {
     grid-column: 1;
     grid-row: 1;
-    padding: 24px 28px 0;
+    padding: 12px 20px 0;
     justify-content: center;
   }
   .heroPhoto { border-radius: 12px; }
   .heroLeft {
     grid-column: 1;
     grid-row: 2;
-    padding: 32px 0 0;
+    padding: 12px 0 0;
   }
   .heroStats {
     grid-column: 1;
     grid-row: 3;
   }
-  .heroContent { padding: 0 28px; max-width: 100%; }
+  .heroContent { padding: 0 20px; max-width: 100%; }
 
   .pillarsGrid { grid-template-columns: repeat(2, 1fr); }
   .programsGrid { grid-template-columns: 1fr; gap: 40px; }
@@ -822,8 +822,8 @@
   .sectionH2 { font-size: clamp(24px, 9vw, 36px); }
 
   /* Hero */
-  .heroRight { padding: 16px 16px 0; }
-  .heroContent { padding: 20px 20px 28px; }
+  .heroRight { padding: 8px 12px 0; }
+  .heroContent { padding: 10px 16px 24px; }
   .heroH1 { font-size: clamp(22px, 8vw, 30px); line-height: 1.15; }
   .heroSub { font-size: 13px; margin-bottom: 20px; }
   .heroTag { font-size: 9px; padding: 6px 12px; margin-bottom: 16px; }
