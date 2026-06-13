@@ -1,6 +1,6 @@
 /* ── BASE ── */
 .pageContainer {
-  background: #02040A;
+  background: var(--deep-navy);
   color: #fff;
   overflow-x: hidden;
   font-family: var(--font-base);
@@ -24,7 +24,7 @@
 }
 
 .section { padding: 120px 0; position: relative; z-index: 1; }
-.sectionDarker { background: #040814; }
+.sectionDarker { background: #060C1C; }
 
 .sectionLabel {
   display: inline-flex;
@@ -71,7 +71,7 @@
   grid-template-columns: 54% 46%;
   grid-template-rows: 1fr auto;
   padding-top: 48px;
-  background: #02040A;
+  background: var(--deep-navy);
   position: relative;
 }
 
@@ -224,6 +224,13 @@
   display: block;
   border-radius: 16px;
   user-select: none;
+  /* oculta marca d'água no canto inferior direito */
+  mask-image: linear-gradient(to bottom, black 68%, transparent 92%),
+              linear-gradient(to left,   black 88%, transparent 100%);
+  mask-composite: intersect;
+  -webkit-mask-image: linear-gradient(to bottom, black 68%, transparent 92%),
+                      linear-gradient(to left,   black 88%, transparent 100%);
+  -webkit-mask-composite: destination-in;
 }
 
 /* ── HERO STATS — barra de largura total na base do hero ── */
@@ -233,7 +240,7 @@
   display: flex;
   align-items: stretch;
   border-top: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(2, 4, 10, 0.85);
+  background: rgba(7, 13, 30, 0.9);
   backdrop-filter: blur(12px);
   position: relative;
   z-index: 2;
