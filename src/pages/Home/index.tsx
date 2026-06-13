@@ -67,16 +67,7 @@ export default function Home() {
 
       {/* HERO */}
       <section className={styles.hero}>
-        {/* Foto como fundo full-bleed */}
-        <img
-          src="/founders.jpeg"
-          alt="Fundadores E-EMPREENDA+"
-          className={styles.heroPhoto}
-          draggable={false}
-          onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
-        />
-        <div className={styles.heroPhotoGradient} />
-
+        {/* Coluna esquerda — texto */}
         <div className={styles.heroLeft}>
           <div className={styles.heroContent}>
 
@@ -105,8 +96,16 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Coluna direita vazia — fundadores aparecem no fundo */}
-        <div className={styles.heroRight} />
+        {/* Coluna direita — foto contida */}
+        <div className={styles.heroRight}>
+          <img
+            src="/founders.jpeg"
+            alt="Fundadores E-EMPREENDA+"
+            className={styles.heroPhoto}
+            draggable={false}
+            onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+          />
+        </div>
 
         <div className={styles.heroStats}>
           {[
