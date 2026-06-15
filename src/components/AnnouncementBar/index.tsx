@@ -42,30 +42,32 @@ export default function AnnouncementBar() {
         </div>
       </div>
 
-      <div className={styles.center}>
-        <span className={styles.countLabel}>Inscrições encerram em:</span>
-        <div className={styles.timer}>
-          <span className={styles.timerUnit}>
-            <strong>{count.days}</strong>
-            <span className={styles.timerLabel}>DIAS</span>
-          </span>
-          <span className={styles.timerSep}>:</span>
-          <span className={styles.timerUnit}>
-            <strong>{pad(count.hours)}</strong>
-            <span className={styles.timerLabel}>HORAS</span>
-          </span>
-          <span className={styles.timerSep}>:</span>
-          <span className={styles.timerUnit}>
-            <strong>{pad(count.mins)}</strong>
-            <span className={styles.timerLabel}>MIN</span>
-          </span>
-          <span className={styles.timerSep}>:</span>
-          <span className={styles.timerUnit}>
-            <strong>{pad(count.secs)}</strong>
-            <span className={styles.timerLabel}>SEG</span>
-          </span>
+      {count.days <= 15 && (
+        <div className={styles.center}>
+          <span className={styles.countLabel}>Inscrições encerram em:</span>
+          <div className={styles.timer}>
+            <span className={styles.timerUnit}>
+              <strong>{count.days}</strong>
+              <span className={styles.timerLabel}>DIAS</span>
+            </span>
+            <span className={styles.timerSep}>:</span>
+            <span className={styles.timerUnit}>
+              <strong>{pad(count.hours)}</strong>
+              <span className={styles.timerLabel}>HORAS</span>
+            </span>
+            <span className={styles.timerSep}>:</span>
+            <span className={styles.timerUnit}>
+              <strong>{pad(count.mins)}</strong>
+              <span className={styles.timerLabel}>MIN</span>
+            </span>
+            <span className={styles.timerSep}>:</span>
+            <span className={styles.timerUnit}>
+              <strong>{pad(count.secs)}</strong>
+              <span className={styles.timerLabel}>SEG</span>
+            </span>
+          </div>
         </div>
-      </div>
+      )}
 
       <div className={styles.right}>
         <Link to="/inscricao" className={styles.cta}>
