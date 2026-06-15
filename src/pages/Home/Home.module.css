@@ -718,9 +718,12 @@
     grid-row: 1;
     padding: 8px 16px 0;
     justify-content: center;
+    overflow: visible;
   }
-  /* No mobile: só esconde o canto inferior direito (marca d'água), sem fade no fundo */
+  /* No mobile: volta ao tamanho natural e esconde só a marca d'água */
   .heroPhoto {
+    height: auto;
+    object-fit: unset;
     border-radius: 12px;
     mask-image: radial-gradient(circle at 97% 97%, transparent 9%, black 16%);
     -webkit-mask-image: radial-gradient(circle at 97% 97%, transparent 9%, black 16%);
