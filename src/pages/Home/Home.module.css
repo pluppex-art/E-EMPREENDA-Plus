@@ -85,6 +85,7 @@
   padding-top: 48px;
   background: var(--deep-navy);
   position: relative;
+  max-height: calc(100vh - 48px);
 }
 
 .heroLeft {
@@ -92,7 +93,7 @@
   align-items: flex-start;
   grid-row: 1;
   grid-column: 1;
-  padding: 72px 0 64px;
+  padding: 36px 0 24px;
 }
 
 .heroContent {
@@ -115,7 +116,7 @@
   text-transform: uppercase;
   padding: 8px 16px;
   border-radius: 100px;
-  margin-bottom: 32px;
+  margin-bottom: 16px;
 }
 
 .heroTagDot {
@@ -158,18 +159,18 @@
 }
 
 .heroSub {
-  font-size: clamp(14px, 1.4vw, 17px);
+  font-size: clamp(13px, 1.2vw, 15px);
   color: rgba(255, 255, 255, 0.45);
   line-height: 1.55;
-  margin-bottom: 32px;
+  margin-bottom: 20px;
   max-width: 480px;
 }
 
 .heroCredentials {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 40px;
+  gap: 10px;
+  margin-bottom: 24px;
 }
 
 .credItem {
@@ -203,11 +204,11 @@
   background: var(--btn-color);
   color: #fff;
   font-family: var(--font-display);
-  font-size: 18px;
+  font-size: 15px;
   font-weight: 800;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 22px 52px;
+  padding: 16px 40px;
   border-radius: 999px;
   width: 100%;
   transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
@@ -252,6 +253,7 @@
   grid-column: 2;
   overflow: hidden;
   padding-right: 48px;
+  padding-top: 40px;
 }
 
 /* Foto preenche toda a altura do hero */
