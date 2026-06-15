@@ -253,7 +253,7 @@
   grid-column: 2;
   overflow: hidden;
   padding-right: 48px;
-  padding-top: 40px;
+  padding-top: 12px;
 }
 
 /* Foto preenche toda a altura do hero */
@@ -261,7 +261,7 @@
   width: 107%;
   height: 83%;
   object-fit: cover;
-  object-position: center top;
+  object-position: center 15%;
   display: block;
   user-select: none;
   /* oculta marca d'água no canto inferior direito */
