@@ -7,29 +7,31 @@
 
 :root {
   /* Brand Colors */
-  --deep-navy:    #040914;
-  --navy-mid:     #080f25;
-  --navy-light:   #0d1a3a;
-  --orange:       #FF5C00;
+  --deep-navy: #040914;
+  --navy-mid: #080f25;
+  --navy-light: #0d1a3a;
+  --orange: #FF5C00;
   --orange-hover: #E05200;
-  --white:        #FFFFFF;
-  --grey-400:     #9A9A9A;
+  --white: #FFFFFF;
+  --grey-400: #9A9A9A;
 
   /* Typography */
   --font-display: 'Montserrat', sans-serif;
-  --font-body:    'Inter', sans-serif;
+  --font-body: 'Inter', sans-serif;
 
   /* Spacing */
-  --max-w:        1200px;
-  --radius:       4px;
+  --max-w: 1200px;
+  --radius: 4px;
 
   /* Transitions */
-  --transition:   0.25s ease;
+  --transition: 0.25s ease;
 }
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  margin: 0;
+  margin: -4;
   padding: 0;
 }
 
@@ -47,7 +49,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-family: var(--font-display);
   font-weight: 800;
   line-height: 1.15;
@@ -82,10 +88,19 @@ button {
 
 /* Fade-up animation */
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(28px); }
-  to   { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
