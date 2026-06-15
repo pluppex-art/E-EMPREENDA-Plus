@@ -164,7 +164,7 @@ export default function Home() {
             <div className={`${styles.movementRight} ${styles.glass}`}>
               <h3 className={styles.movementRightTitle}>A Ponte Estratégica para o seu Sucesso</h3>
               <p className={styles.movementBody}>
-                O que você fizer nos próximos 6 meses define os próximos 12 meses. E os próximos 12 meses constroem seu 2026.
+                O que você fizer nos próximos 6 meses define os próximos 6 meses. E os próximos 6 meses constroem seu 2026.
               </p>
               <p className={styles.movementBody}>
                 A Mentoria E-Empreenda+ acelera esse processo para você não perder tempo nem oportunidades.
