@@ -142,12 +142,13 @@
 }
 
 .heroH1 {
-  font-size: clamp(34px, 3.6vw, 52px);
+  font-size: clamp(30px, 3.0vw, 44px);
   font-weight: 900;
-  line-height: 1.1;
+  line-height: 1.12;
   margin-bottom: 16px;
   letter-spacing: -0.01em;
   color: #fff;
+  text-wrap: balance;
 }
 
 .heroH1 em {

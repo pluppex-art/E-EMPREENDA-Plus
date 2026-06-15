@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../../components/Logo'
 import AnnouncementBar from '../../components/AnnouncementBar'
@@ -71,8 +71,8 @@ export default function Home() {
         <div className={styles.heroLeft}>
           <div className={styles.heroContent}>
 
-            <Logo size={36} />
-            <div className={styles.heroTag} style={{ marginTop: '16px' }}>
+            <Logo size={46} />
+            <div className={styles.heroTag} style={{ marginTop: '20px' }}>
               <span className={styles.heroTagDot} />
               5 de Agosto · Vagas Limitadas
             </div>
