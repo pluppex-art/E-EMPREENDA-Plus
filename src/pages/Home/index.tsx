@@ -41,7 +41,7 @@ const DEFAULT_GROUP_BENEFITS = [
 
 const DEFAULT_HERO = {
   h1: 'Seu negócio não existe porque ninguém te ensinou o caminho.',
-  subtitle: 'A maioria das pessoas sonha em empreender, mas poucas têm coragem de começar. A Turma 3 da E-Empreenda+ é a sua oportunidade para construir um negócio lucrativo com propósito e visão estratégica.',
+  subtitle: 'A maioria das pessoas sonham em empreender, mas poucas têm coragem de começar. A Turma 3 da E-Empreenda+ é a sua oportunidade para construir um negócio lucrativo com propósito e visão estratégica.',
   quote: 'Empreender transforma vidas.',
   ctaText: 'Garantir Minha Vaga',
 }
@@ -164,7 +164,7 @@ export default function Home() {
             <div className={`${styles.movementRight} ${styles.glass}`}>
               <h3 className={styles.movementRightTitle}>A Ponte Estratégica para o seu Sucesso</h3>
               <p className={styles.movementBody}>
-                O que você fizer nos próximos 90 dias define os próximos 12 meses. E os próximos 12 meses constroem seu 2026.
+                O que você fizer nos próximos 6 meses define os próximos 12 meses. E os próximos 12 meses constroem seu 2026.
               </p>
               <p className={styles.movementBody}>
                 A Mentoria E-Empreenda+ acelera esse processo para você não perder tempo nem oportunidades.
