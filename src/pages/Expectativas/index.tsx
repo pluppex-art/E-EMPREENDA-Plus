@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence, type Variants } from 'framer-motion'
-import { ArrowLeft, ArrowRight, Check, AlertCircle, Home } from 'lucide-react'
+import { ArrowLeft, ArrowRight, AlertCircle } from 'lucide-react'
 import Logo from '../../components/Logo'
 import styles from './Expectativas.module.css'
 import { supabase, AXIS, SUPABASE_CONFIGURED } from '../../lib/supabase'
@@ -45,7 +45,6 @@ export default function Expectativas() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [isSuccess, setIsSuccess] = useState(false)
 
   // Total steps including intro (step 0) and final confirmation (step 10)
   const TOTAL_STEPS = 11
@@ -238,7 +237,7 @@ Dúvida/Tópico específico: ${formData.duvidaEspecifica || 'Não preenchido'}
       // Modo desenvolvimento / Supabase não configurado
       setTimeout(() => {
         setLoading(false)
-        setIsSuccess(true)
+        navigate('/obrigado-pesquisa', { state: { nome: formData.nome, negocio: formData.negocio } })
       }, 1500)
       return
     }
@@ -281,7 +280,7 @@ Dúvida/Tópico específico: ${formData.duvidaEspecifica || 'Não preenchido'}
         setError('Erro ao enviar as respostas. Por favor, tente novamente.')
         console.error('[Survey error]', dbError)
       } else {
-        setIsSuccess(true)
+        navigate('/obrigado-pesquisa', { state: { nome: formData.nome, negocio: formData.negocio } })
       }
     } catch (err) {
       setLoading(false)
@@ -297,40 +296,6 @@ Dúvida/Tópico específico: ${formData.duvidaEspecifica || 'Não preenchido'}
     exit: { opacity: 0, y: -30, transition: { duration: 0.3, ease: 'easeIn' as const } },
   }
 
-  if (isSuccess) {
-    return (
-      <div className={styles.pageContainer}>
-        <header className={styles.header}>
-          <Logo size={42} />
-        </header>
-
-        <main className={styles.mainContent}>
-          <div className={styles.formWrapper}>
-            <motion.div
-              className={styles.successContainer}
-              initial="initial"
-              animate="animate"
-              variants={slideVariants}
-            >
-              <div className={styles.successIcon}>
-                <Check size={44} strokeWidth={2.5} />
-              </div>
-              <h1 className={styles.successTitle}>Respostas Recebidas!</h1>
-              <p className={styles.successDesc}>
-                Obrigado, <strong>{formData.nome.split(' ')[0]}</strong>! Suas expectativas foram
-                registradas com sucesso. Nossa equipe e mentores usarão essas informações para tornar a
-                E-Empreenda+ o mais proveitosa possível para você e para o <strong>{formData.negocio}</strong>.
-              </p>
-              <button onClick={() => navigate('/')} className={styles.btnHome}>
-                <Home size={18} style={{ marginRight: 8 }} />
-                Voltar para a Home
-              </button>
-            </motion.div>
-          </div>
-        </main>
-      </div>
-    )
-  }
 
   return (
     <div className={styles.pageContainer}>
