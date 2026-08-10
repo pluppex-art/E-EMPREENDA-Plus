@@ -4,7 +4,6 @@ import { motion, AnimatePresence, type Variants } from 'framer-motion'
 import { ArrowLeft, ArrowRight, AlertCircle } from 'lucide-react'
 import Logo from '../../components/Logo'
 import styles from './Expectativas.module.css'
-import { supabase, AXIS, SUPABASE_CONFIGURED } from '../../lib/supabase'
 
 interface SurveyData {
   nome: string
@@ -233,52 +232,37 @@ Dedicação Semanal: ${dedicacaoLabel}
 Dúvida/Tópico específico: ${formData.duvidaEspecifica || 'Não preenchido'}
     `.trim()
 
-    if (!SUPABASE_CONFIGURED) {
-      // Modo desenvolvimento / Supabase não configurado
-      setTimeout(() => {
-        setLoading(false)
-        navigate('/obrigado-pesquisa', { state: { nome: formData.nome, negocio: formData.negocio } })
-      }, 1500)
-      return
-    }
-
     try {
-      const { error: dbError } = await supabase.from('leads').insert({
-        tenant_id: AXIS.TENANT_ID,
-        pipeline_id: AXIS.PIPELINE_ID,
-        stage_id: AXIS.STAGE_ID,
-        seller_id: AXIS.SELLER_ID,
-        pipelineId: AXIS.PIPELINE_SLUG,
-        stageId: AXIS.STAGE_SLUG,
-        name: formData.nome,
-        email: formData.email,
-        mobile_wa: formData.telefone,
-        phone: formData.telefone,
-        source: 'pesquisa_expectativas',
-        value: 0.0,
-        status: 'Open',
-        temperature: 'Warm',
-        priority: 'Medium',
-        lead_interesse_cliente: 'Pesquisa de Expectativas - E-Empreenda+',
-        iaSummary: iaSummary,
-        customFields: {
-          nome_negocio: formData.negocio,
-          momento_negocio: formData.momento,
-          desafio_principal: formData.desafio,
-          objetivo_6_meses: formData.objetivo6Meses,
-          motivacao_participacao: formData.motivacao,
-          expectativa_aprendizado: formData.aprender,
-          resultado_valeu_pena: formData.valeuAPena,
-          autoavaliacao_gestao: formData.nivelGestao,
-          tempo_dedicacao_semanal: formData.dedicacao,
-          duvida_especifica: formData.duvidaEspecifica,
-        },
+      const resp = await fetch('/api/submit-lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.nome,
+          email: formData.email,
+          mobile_wa: formData.telefone,
+          phone: formData.telefone,
+          source: 'pesquisa_expectativas',
+          lead_interesse_cliente: 'Pesquisa de Expectativas - E-Empreenda+',
+          iaSummary,
+          customFields: {
+            nome_negocio: formData.negocio,
+            momento_negocio: formData.momento,
+            desafio_principal: formData.desafio,
+            objetivo_6_meses: formData.objetivo6Meses,
+            motivacao_participacao: formData.motivacao,
+            expectativa_aprendizado: formData.aprender,
+            resultado_valeu_pena: formData.valeuAPena,
+            autoavaliacao_gestao: formData.nivelGestao,
+            tempo_dedicacao_semanal: formData.dedicacao,
+            duvida_especifica: formData.duvidaEspecifica,
+          },
+        }),
       })
 
       setLoading(false)
-      if (dbError) {
+      if (!resp.ok) {
         setError('Erro ao enviar as respostas. Por favor, tente novamente.')
-        console.error('[Survey error]', dbError)
+        console.error('[Survey error]', await resp.text())
       } else {
         navigate('/obrigado-pesquisa', { state: { nome: formData.nome, negocio: formData.negocio } })
       }
